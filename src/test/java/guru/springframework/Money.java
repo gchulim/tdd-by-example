@@ -5,7 +5,8 @@ public class Money {
 
     public boolean equals(Object o) {
         Money money = (Money) o;
-        return amount == money.amount;
+        return amount == money.amount
+                && this.getClass() == money.getClass();
     }
 
 
