@@ -26,8 +26,13 @@ public class Money implements Expression {
         return new Money(this.amount * multiplier, this.currency);
     }
 
-    public Expression plus(Money money) {
-        return new Money(this.amount + money.amount, this.currency);
+    public Expression plus(Money addend) {
+        return new Sum(this, addend);
+    }
+
+    @Override
+    public Money reduce(String to) {
+        return this;
     }
 
     public boolean equals(Object o) {
