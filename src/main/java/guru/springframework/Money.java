@@ -1,8 +1,8 @@
 package guru.springframework;
 
 public class Money implements Expression {
-    protected int amount;
-    protected String currency;
+    protected final int amount;
+    protected final String currency;
 
 
     public Money(int amount, String currency) {
@@ -14,11 +14,11 @@ public class Money implements Expression {
         return currency;
     }
 
-    public static Money dollar(int amount) {
+    static Money dollar(int amount) {
         return new Money(amount, "USD");
     }
 
-    public static Money franc(int amount) {
+    static Money franc(int amount) {
         return new Money(amount, "CHF");
     }
 
@@ -39,7 +39,7 @@ public class Money implements Expression {
     public boolean equals(Object o) {
         Money money = (Money) o;
         return amount == money.amount
-                && this.currency == money.currency;
+                && this.currency.equals(money.currency);
     }
 
     @Override
